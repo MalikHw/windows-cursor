@@ -5,31 +5,40 @@ using namespace geode::prelude;
 
 #ifdef GEODE_IS_WINDOWS
 #include <windows.h>
+#include "GLFW/glfw3.h"
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include "GLFW/glfw3native.h"
 
-// cache the cursors once so we don't reload them every frame
-static HCURSOR s_handCursor = nullptr;
-static HCURSOR s_arrowCursor = nullptr;
+static GLFWcursor* s_handCursor = nullptr;
+static GLFWcursor* s_arrowCursor = nullptr;
 
-static void ensureCursors() {
-    if (!s_handCursor)
-        s_handCursor = LoadCursor(nullptr, IDC_HAND);
-    if (!s_arrowCursor)
-        s_arrowCursor = LoadCursor(nullptr, IDC_ARROW);
+static GLFWwindow* getGLFWWindow() {
+    auto view = cocos2d::CCEGLView::sharedOpenGLView();
+    return view->getWindow(); // returns the GLFWwindow*
 }
 
-// hook CCMenuItem::selected(), started when the cursor hovers a button
+static void ensureCursors() {
+    if (!s_handCursor) {
+        HCURSOR hHand = LoadCursor(nullptr, IDC_HAND);
+        // create a GLFW cursor from the win32 handle isn't directly possible,
+        // so use standard GLFW cursor shapes instead
+        s_handCursor  = glfwCreateStandardCursor(GLFW_HAND_CURSOR);
+        s_arrowCursor = glfwCreateStandardCursor(GLFW_ARROW_CURSOR);
+    }
+}
+
 class $modify(CCMenuItem) {
     virtual void selected() {
         CCMenuItem::selected();
         ensureCursors();
-        SetCursor(s_handCursor);
+        glfwSetCursor(getGLFWWindow(), s_handCursor);
     }
 
     virtual void unselected() {
         CCMenuItem::unselected();
         ensureCursors();
-        SetCursor(s_arrowCursor);
+        glfwSetCursor(getGLFWWindow(), s_arrowCursor);
     }
 };
 
-#endif // GEODE_IS_WINDOWS
+#endif
