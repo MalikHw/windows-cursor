@@ -13,10 +13,8 @@
         "source": "https://github.com/MalikHw/windows-cursor",
         "community": "https://discord.gg/G9bZ92eg2n"
     },
-    "dependencies": [
-        {
-            "id": "alphalaneous.alphas-ui-pack",
-            "importance": "required"
-        }
-    ]
+    "dependencies": {
+        "id": "alphalaneous.alphas-ui-pack",
+        "required": true
+    }
 }
