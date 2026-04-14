@@ -3,7 +3,7 @@
     "gd": {
         "win": "2.2081"
     },
-    "version": "1.0.0",
+    "version": "v1.0.0",
     "id": "malikhw47.windows-cursor",
     "name": "Windows Cursor Handling",
     "developer": "MalikHw47",
@@ -13,10 +13,10 @@
         "source": "https://github.com/MalikHw/windows-cursor",
         "community": "https://discord.gg/G9bZ92eg2n"
     },
-    "dependencies": {
-        "alphalaneous.alphas-ui-pack": {
-            "importance": "required",
-            "reason": "so this itself works"
+    "dependencies": [
+        {
+            "id": "alphalaneous.alphas-ui-pack",
+            "importance": "required"
         }
-    }
+    ]
 }
