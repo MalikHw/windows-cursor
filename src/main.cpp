@@ -1,4 +1,5 @@
 #include <Geode/Geode.hpp>
+#include <Geode/modify/CCMenuItem.hpp>
 
 using namespace geode::prelude;
 
@@ -11,9 +12,9 @@ static HCURSOR s_arrowCursor = nullptr;
 
 static void ensureCursors() {
     if (!s_handCursor)
-        s_handCursor = LoadCursorW(nullptr, IDC_HAND);
+        s_handCursor = LoadCursor(nullptr, IDC_HAND);
     if (!s_arrowCursor)
-        s_arrowCursor = LoadCursorW(nullptr, IDC_ARROW);
+        s_arrowCursor = LoadCursor(nullptr, IDC_ARROW);
 }
 
 // hook CCMenuItem::selected(), started when the cursor hovers a button
