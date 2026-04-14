@@ -8,16 +8,15 @@
     "name": "Windows Cursor Handling",
     "developer": "MalikHw47",
     "description": "just a simple mod that is cool.",
-    "tags": ["yes", "yeah"],
+    "tags": ["utility", "enhancement"],
     "links": {
         "source": "https://github.com/MalikHw/windows-cursor",
         "community": "https://discord.gg/G9bZ92eg2n"
     },
-    "dependencies": [
-        {
-            "id": "alphalaneous.alphas-ui-pack",
+    "dependencies": {
+        "alphalaneous.alphas-ui-pack": {
             "importance": "required",
             "reason": "so this itself works"
         }
-    ]
+    }
 }
