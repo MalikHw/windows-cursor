@@ -14,7 +14,9 @@
         "community": "https://discord.gg/G9bZ92eg2n"
     },
     "dependencies": {
-        "id": "alphalaneous.alphas-ui-pack",
-        "required": true
+        "alphalaneous.alphas-ui-pack": {
+            "version": ">=v1.0.0",
+            "required": true
+        }
     }
 }
